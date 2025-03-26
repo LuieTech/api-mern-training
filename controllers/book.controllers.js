@@ -6,6 +6,16 @@ module.exports.list = (req, res, next) => {
     .catch(error => next(error))
 }
 
+module.exports.create = (req, res, next) => {
+
+  const body = req.body
+
+  Book.create(body)
+    .then(book => res.status(201).json(book))
+    .catch(error => next(error))
+
+}
+
 module.exports.details = (req, res, next) => {
 
   const bookTitle = req.params.title
@@ -15,3 +25,4 @@ module.exports.details = (req, res, next) => {
     .catch(error => next(error))
 
 }
+
